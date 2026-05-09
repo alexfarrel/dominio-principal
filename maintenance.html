@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- O título é trocado pelo JS conforme o idioma detectado -->
+  <title>Em Manutenção — Alexandre Oliveira</title>
+
+  <!-- ============================================================
+       GOOGLE FONTS
+       Inter = textos | Space Grotesk = títulos
+       (mesmas famílias do projeto principal)
+  ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- ============================================================
+       BARRA DE IDIOMAS
+       O JS marca o idioma ativo e atualiza os textos da página
+  ============================================================ -->
+  <nav class="lang-bar" aria-label="Language / Idioma">
+    <button class="lang-btn" data-lang="en" aria-pressed="false">
+      <!-- Coloque en.png em images/flags/ -->
+      <img src="images/flags/en.png" alt="English" class="flag" />
+      English
+    </button>
+    <button class="lang-btn" data-lang="es" aria-pressed="false">
+      <!-- Coloque es.png em images/flags/ -->
+      <img src="images/flags/es.png" alt="Español" class="flag" />
+      Español
+    </button>
+    <button class="lang-btn" data-lang="pt" aria-pressed="false">
+      <!-- Coloque pt.png em images/flags/ -->
+      <img src="images/flags/pt.png" alt="Português" class="flag" />
+      Português
+    </button>
+  </nav>
+
+  <!-- ============================================================
+       CONTEÚDO PRINCIPAL
+       Os textos com data-i18n="chave" são trocados pelo JS
+  ============================================================ -->
+  <main class="maintenance-container">
+
+    <!-- Ícone de play animado — mesmo tema do portfólio de vídeos -->
+    <div class="maintenance-icon" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+           viewBox="0 0 24 24" fill="currentColor">
+        <polygon points="5,3 19,12 5,21"/>
+      </svg>
+    </div>
+
+    <!-- Badge "Em manutenção" -->
+    <div class="availability-badge">
+      <span class="availability-dot" aria-hidden="true"></span>
+      <span data-i18n="badge">Em manutenção</span>
+    </div>
+
+    <h1 class="maintenance-title" data-i18n="title">
+      Estamos preparando algo novo.
+    </h1>
+
+    <p class="maintenance-desc" data-i18n="desc">
+      O site está temporariamente indisponível enquanto realizamos
+      melhorias e ajustes.
+    </p>
+
+    <!-- Botão "Ver vídeos"
+         Troque o href pelo link do portfólio de vídeos -->
+    <a href="#" class="maintenance-btn" data-i18n-href="btnHref">
+      <!-- Ícone de play inline — pode substituir pelo seu SVG -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+           viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <polygon points="5,3 19,12 5,21"/>
+      </svg>
+      <span data-i18n="btn">Ver vídeos</span>
+    </a>
+
+    <p class="maintenance-note" data-i18n="note">Volte em breve.</p>
+
+  </main>
+
+  <!-- ============================================================
+       RODAPÉ — copyright com ano automático
+  ============================================================ -->
+  <footer class="site-footer">
+    <p class="footer-copy">
+      &copy; <span id="ano-atual"></span> Alexandre Oliveira ·
+      <span data-i18n="rights">Todos os direitos reservados</span>
+    </p>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+</body>
+</html>

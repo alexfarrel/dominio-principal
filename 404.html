@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 · Page Not Found — Alexandre Oliveira</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/404.css" />
+</head>
+
+<body class="page-404">
+
+  <!-- ============================================================
+       BARRA DE IDIOMAS (mesma da maintenance.html)
+  ============================================================ -->
+  <nav class="lang-bar" aria-label="Language / Idioma">
+    <button class="lang-btn" data-lang="en" aria-pressed="false">
+      <img src="images/flags/en.png" alt="English" class="flag" />
+      English
+    </button>
+    <button class="lang-btn" data-lang="es" aria-pressed="false">
+      <img src="images/flags/es.png" alt="Español" class="flag" />
+      Español
+    </button>
+    <button class="lang-btn" data-lang="pt" aria-pressed="false">
+      <img src="images/flags/pt.png" alt="Português" class="flag" />
+      Português
+    </button>
+  </nav>
+
+  <!-- ============================================================
+       CONTEÚDO PRINCIPAL DA 404
+  ============================================================ -->
+  <main class="not-found-container" aria-labelledby="erro-titulo">
+
+    <!-- Número decorativo -->
+    <p class="not-found-code" aria-hidden="true">404</p>
+
+    <!-- Ícone de play com pulso -->
+    <div class="not-found-icon" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+           viewBox="0 0 24 24" fill="currentColor">
+        <polygon points="5,3 19,12 5,21"/>
+      </svg>
+    </div>
+
+    <h1 class="not-found-title" id="erro-titulo" data-i18n="title404">
+      Esta página não existe
+    </h1>
+
+    <p class="not-found-desc" data-i18n="desc404">
+      Parece que este vídeo foi deletado — ou talvez nunca esteve aqui.<br />
+      Volte e confira o conteúdo de verdade.
+    </p>
+
+    <!-- Botão voltar — aponta para maintenance.html (index deste domínio) -->
+    <a href="/maintenance.html" class="not-found-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+           viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
+           aria-hidden="true">
+        <line x1="19" y1="12" x2="5" y2="12"/>
+        <polyline points="12 19 5 12 12 5"/>
+      </svg>
+      <span data-i18n="btn404">Voltar ao início</span>
+    </a>
+
+  </main>
+
+  <!-- ============================================================
+       RODAPÉ
+  ============================================================ -->
+  <footer class="site-footer site-footer--404">
+    <p class="footer-copy">
+      &copy; <span id="ano-atual"></span> Alexandre Oliveira ·
+      <span data-i18n="rights">Todos os direitos reservados</span>
+    </p>
+  </footer>
+
+  <script src="js/i18n.js"></script>
+</body>
+</html>

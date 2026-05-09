@@ -1,0 +1,101 @@
+/* ============================================================
+   404.css — Estilos exclusivos da página 404
+   Importado apenas no 404.html, não afeta a maintenance.html
+============================================================ */
+
+/* Centraliza verticalmente igual à página de manutenção */
+.page-404 {
+  justify-content: center;
+}
+
+/* Bloco central */
+.not-found-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  max-width: 420px;
+  width: 100%;
+  margin-top: -48px;
+  animation: entrada 0.6s ease both;
+}
+
+/* Número "404" decorativo em outline */
+.not-found-code {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(96px, 25vw, 160px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -6px;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--cor-borda);
+  margin-bottom: -16px;
+  user-select: none;
+  animation: entrada 0.6s 0.05s ease both;
+}
+
+/* Ícone de play com pulso */
+.not-found-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--cor-destaque-bg);
+  border: 1px solid rgba(45, 212, 191, 0.3);
+  color: var(--cor-destaque);
+  animation: entrada 0.6s 0.1s ease both, pulso-icone 3s 0.7s ease-in-out infinite;
+}
+
+/* Título */
+.not-found-title {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(22px, 5vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  margin-top: -4px;
+  animation: entrada 0.6s 0.15s ease both;
+}
+
+/* Descrição */
+.not-found-desc {
+  font-size: 14px;
+  color: var(--cor-texto-muted);
+  line-height: 1.7;
+  animation: entrada 0.6s 0.2s ease both;
+}
+
+/* Botão "Voltar" — borda, sem preenchimento */
+.not-found-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--cor-texto);
+  font-family: var(--fonte-texto);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: 1px solid var(--cor-borda);
+  margin-top: 8px;
+  transition: border-color 0.2s, color 0.2s, transform 0.15s;
+  animation: entrada 0.6s 0.25s ease both;
+}
+
+.not-found-btn:hover {
+  border-color: var(--cor-destaque);
+  color: var(--cor-destaque);
+  transform: translateX(-3px);
+}
+
+/* Rodapé mínimo */
+.site-footer--404 {
+  margin-top: 32px;
+}
+
+/* Animação de entrada (compartilhada com style.css via @keyframes entrada) */
+/* Não precisa redeclarar — o style.css já define @keyframes entrada e pulso-icone */
