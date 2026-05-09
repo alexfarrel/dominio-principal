@@ -1,42 +1,67 @@
 /* ============================================================
-   404.css — Estilos exclusivos da página 404
-   Importado apenas no 404.html, não afeta a maintenance.html
+   404.css — Estilos específicos da página 404
+   
+   Como usar:
+   Opção A (recomendado): adicione este arquivo à pasta css/ e
+   deixe o <link> no 404.html apontar para ele. Nada muda no
+   seu style.css original.
+   
+   Opção B: copie todo o conteúdo deste arquivo e cole ao final
+   do seu style.css — vai funcionar da mesma forma.
 ============================================================ */
 
-/* Centraliza verticalmente igual à página de manutenção */
+
+/* ------------------------------------------------------------
+   BODY DA PÁGINA 404
+   Centraliza o conteúdo vertical e horizontalmente
+   sem quebrar o layout das outras páginas
+------------------------------------------------------------ */
 .page-404 {
-  justify-content: center;
+  /* Ocupa toda a altura da viewport para centralizar o bloco */
+  min-height: 100vh;
+  justify-content: center; /* body já é flex-column pelo style.css */
 }
 
-/* Bloco central */
+
+/* ------------------------------------------------------------
+   BLOCO CENTRAL DA 404
+------------------------------------------------------------ */
 .not-found-container {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   gap: 20px;
+  /* Limita a largura do bloco de texto */
   max-width: 420px;
   width: 100%;
+  /* Empurra levemente para cima do centro, fica mais natural visualmente */
   margin-top: -48px;
-  animation: entrada 0.6s ease both;
 }
 
-/* Número "404" decorativo em outline */
+
+/* ------------------------------------------------------------
+   NÚMERO "404" DECORATIVO (grande, ao fundo)
+------------------------------------------------------------ */
 .not-found-code {
   font-family: var(--fonte-titulo);
   font-size: clamp(96px, 25vw, 160px);
   font-weight: 700;
   line-height: 1;
   letter-spacing: -6px;
+  /* Transparente com borda — efeito "outline text" sutil */
   color: transparent;
   -webkit-text-stroke: 1.5px var(--cor-borda);
+  /* Posição: fica acima do ícone sem ocupar espaço extra */
   margin-bottom: -16px;
+  /* Selecionar o texto não faz sentido aqui */
   user-select: none;
-  animation: entrada 0.6s 0.05s ease both;
 }
 
-/* Ícone de play com pulso */
+
+/* ------------------------------------------------------------
+   ÍCONE DE PLAY (conecta visualmente ao portfólio de vídeos)
+------------------------------------------------------------ */
 .not-found-icon {
   display: flex;
   align-items: center;
@@ -44,31 +69,47 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
+  /* Mesmo estilo do botão de play dos vídeos */
   background: var(--cor-destaque-bg);
   border: 1px solid rgba(45, 212, 191, 0.3);
   color: var(--cor-destaque);
-  animation: entrada 0.6s 0.1s ease both, pulso-icone 3s 0.7s ease-in-out infinite;
+  /* Animação suave de pulso — discreta, não distrai */
+  animation: pulso-icone 3s ease-in-out infinite;
 }
 
-/* Título */
+@keyframes pulso-icone {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.15); }
+  50%       { box-shadow: 0 0 0 14px rgba(45, 212, 191, 0); }
+}
+
+
+/* ------------------------------------------------------------
+   TÍTULO DA 404
+------------------------------------------------------------ */
 .not-found-title {
   font-family: var(--fonte-titulo);
   font-size: clamp(22px, 5vw, 28px);
   font-weight: 700;
   letter-spacing: -0.3px;
+  /* Margem menor que o gap padrão para ficar colado no ícone */
   margin-top: -4px;
-  animation: entrada 0.6s 0.15s ease both;
 }
 
-/* Descrição */
+
+/* ------------------------------------------------------------
+   DESCRIÇÃO / SUBTEXTO
+------------------------------------------------------------ */
 .not-found-desc {
   font-size: 14px;
   color: var(--cor-texto-muted);
   line-height: 1.7;
-  animation: entrada 0.6s 0.2s ease both;
 }
 
-/* Botão "Voltar" — borda, sem preenchimento */
+
+/* ------------------------------------------------------------
+   BOTÃO "BACK TO HOME"
+   Mesmo estilo visual do .whatsapp-btn, cor neutra
+------------------------------------------------------------ */
 .not-found-btn {
   display: inline-flex;
   align-items: center;
@@ -83,19 +124,36 @@
   border: 1px solid var(--cor-borda);
   margin-top: 8px;
   transition: border-color 0.2s, color 0.2s, transform 0.15s;
-  animation: entrada 0.6s 0.25s ease both;
 }
 
 .not-found-btn:hover {
   border-color: var(--cor-destaque);
   color: var(--cor-destaque);
-  transform: translateX(-3px);
+  transform: translateX(-3px); /* desloca levemente para a esquerda — reforça a seta */
 }
 
-/* Rodapé mínimo */
+
+/* ------------------------------------------------------------
+   RODAPÉ MÍNIMO DA 404
+   Remove o gap grande que o .site-footer usa nas outras páginas
+------------------------------------------------------------ */
 .site-footer--404 {
   margin-top: 32px;
+  gap: 0;
 }
 
-/* Animação de entrada (compartilhada com style.css via @keyframes entrada) */
-/* Não precisa redeclarar — o style.css já define @keyframes entrada e pulso-icone */
+.not-found-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--cor-texto);
+  font-family: var(--fonte-texto);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: 1px solid var(--cor-borda);
+  margin-top: 8px;
+  transition: border-color 0.2s, color 0.2s, transform 0.15s;
+}

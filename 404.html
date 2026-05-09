@@ -1,90 +1,114 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>404 · Page Not Found — Alexandre Oliveira</title>
 
+  <!-- GOOGLE FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
 
+  <!-- CSS -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/404.css" />
+
+  <!-- Evita flash de múltiplos idiomas -->
+  <style>
+    [data-lang] {
+      display: none;
+    }
+  </style>
 </head>
 
 <body class="page-404">
 
-  <!-- ============================================================
-       BARRA DE IDIOMAS (mesma da maintenance.html)
-  ============================================================ -->
-  <nav class="lang-bar" aria-label="Language / Idioma">
-    <button class="lang-btn" data-lang="en" aria-pressed="false">
-      <img src="images/flags/en.png" alt="English" class="flag" />
-      English
-    </button>
-    <button class="lang-btn" data-lang="es" aria-pressed="false">
-      <img src="images/flags/es.png" alt="Español" class="flag" />
-      Español
-    </button>
-    <button class="lang-btn" data-lang="pt" aria-pressed="false">
-      <img src="images/flags/pt.png" alt="Português" class="flag" />
-      Português
-    </button>
-  </nav>
-
-  <!-- ============================================================
-       CONTEÚDO PRINCIPAL DA 404
-  ============================================================ -->
   <main class="not-found-container" aria-labelledby="erro-titulo">
 
-    <!-- Número decorativo -->
     <p class="not-found-code" aria-hidden="true">404</p>
 
-    <!-- Ícone de play com pulso -->
     <div class="not-found-icon" aria-hidden="true">
-      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
-           viewBox="0 0 24 24" fill="currentColor">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
         <polygon points="5,3 19,12 5,21"/>
       </svg>
     </div>
 
-    <h1 class="not-found-title" id="erro-titulo" data-i18n="title404">
-      Esta página não existe
+    <!-- TÍTULO -->
+    <h1 class="not-found-title" id="erro-titulo">
+      <span data-lang="en">This page doesn't exist</span>
+      <span data-lang="pt">Esta página não existe</span>
+      <span data-lang="es">Esta página no existe</span>
     </h1>
 
-    <p class="not-found-desc" data-i18n="desc404">
-      Parece que este vídeo foi deletado — ou talvez nunca esteve aqui.<br />
-      Volte e confira o conteúdo de verdade.
+    <!-- DESCRIÇÃO -->
+    <p class="not-found-desc">
+      <span data-lang="en">
+        Looks like this video got deleted — or maybe it was never here.<br />
+        Head back and check out the real content.
+      </span>
+
+      <span data-lang="pt">
+        Parece que este vídeo foi removido — ou talvez nunca esteve aqui.<br />
+        Volte e confira o conteúdo original.
+      </span>
+
+      <span data-lang="es">
+        Parece que este video fue eliminado — o quizá nunca estuvo aquí.<br />
+        Vuelve y mira el contenido real.
+      </span>
     </p>
 
-    <!-- Botão voltar — aponta para maintenance.html (index deste domínio) -->
-    <a href="/maintenance.html" class="not-found-btn">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-           viewBox="0 0 24 24" fill="none" stroke="currentColor"
-           stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"
-           aria-hidden="true">
+    <!-- BOTÃO -->
+    <a href="https://videos.alexandreoliveira.sbs/en/" class="not-found-btn" id="back-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <line x1="19" y1="12" x2="5" y2="12"/>
         <polyline points="12 19 5 12 12 5"/>
       </svg>
-      <span data-i18n="btn404">Voltar ao início</span>
+
+      <span data-lang="en">Back to home</span>
+      <span data-lang="pt">Voltar para o início</span>
+      <span data-lang="es">Volver al inicio</span>
     </a>
 
   </main>
 
-  <!-- ============================================================
-       RODAPÉ
-  ============================================================ -->
   <footer class="site-footer site-footer--404">
     <p class="footer-copy">
-      &copy; <span id="ano-atual"></span> Alexandre Oliveira ·
-      <span data-i18n="rights">Todos os direitos reservados</span>
+      &copy; <span id="ano-atual"></span> Alexandre Oliveira · <span data-lang="en">All rights reserved</span>
+      <span data-lang="pt">Todos os direitos reservados</span>
+      <span data-lang="es">Todos los derechos reservados</span>
     </p>
   </footer>
 
-  <script src="js/i18n.js"></script>
+  <!-- Script de idioma -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const lang = (navigator.language || 'en').slice(0, 2);
+
+      const supported = ['en', 'pt', 'es'];
+      const finalLang = supported.includes(lang) ? lang : 'en';
+
+      // Exibir idioma correto
+      document.querySelectorAll('[data-lang]').forEach(el => {
+        el.style.display = el.dataset.lang === finalLang ? 'inline' : 'none';
+      });
+
+      // Ajustar link do botão
+      const btn = document.getElementById('back-btn');
+
+      if (finalLang === 'pt') {
+        btn.href = 'https://videos.alexandreoliveira.sbs/';
+      } else if (finalLang === 'es') {
+        btn.href = 'https://videos.alexandreoliveira.sbs/es.html';
+      } else {
+        btn.href = 'https://videos.alexandreoliveira.sbs/en.html';
+      }
+    });
+  </script>
+
+  <!-- Script principal -->
+  <script src="js/main.js"></script>
+
 </body>
 </html>
